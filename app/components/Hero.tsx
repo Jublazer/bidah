@@ -21,7 +21,9 @@ export default function Hero(){
                 </ComponentsScroll>
             
             </div>    
-            <div className="absolute w-50 h-50 balls rounded-full top-0 left-0 z-index-10"></div>                   
+            <div className="absolute w-30 h-30 balls rounded-full top-20 left-40 z-index-10"></div>                   
+            <div className="absolute w-15 h-15 balls rounded-full top-20 right-50 z-index-10"></div>                   
+            <div className="absolute w-10 h-10 balls rounded-full top-100 left-40 z-index-10"></div>                   
         </div>
     )
 }

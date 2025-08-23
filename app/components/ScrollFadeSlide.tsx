@@ -25,14 +25,14 @@ export default function ScrollFadeText({ children }: ScrollFadeTextProps) {
   }
 
   return (
-    <motion.p
+    <motion.div
       ref={ref}
       initial="hidden"
       animate={controls}
       variants={variants}
-      className="text-lg leading-relaxed text-gray-700"
+      // className="text-lg leading-relaxed text-gray-700"
     >
       {children}
-    </motion.p>
+    </motion.div>
   )
 }
