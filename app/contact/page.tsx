@@ -13,7 +13,6 @@ import {motion, AnimateSharedLayout } from "framer-motion"
 export default function Contact(){
 
     return(
-        <AnimateSharedLayout>
         <div className="md:w-full w-full pt-20 grid md:grid-cols-2 grid-cols-1 gap-4">
                         <div className=" w-full flex justify-start pl-10 flex-col gap-5 ">
                             <h1 className="text-4xl font-bold text-gray-700">Contact</h1>
@@ -32,7 +31,7 @@ export default function Contact(){
                                 <br />
                                 
                                     {/* Contact Form */}
-                                    <div className="container w-full h-[100vh] flex flex-col gap-5 items-center justify-center text-sm">
+                                    <div className="container glass w-full h-[100vh] flex flex-col gap-5 items-center justify-center text-sm">
                                       
                                         <div className="flex p-0 flex-col shadow-2xl backdrop-blur-500 items-center min-h-[500px] justify-center gap-5 bg-white/20 md:w-full p-15  w-[100%] rounded-lg border border-white/20 border-left-green-500">
                                             <form action="" className="form p-5 w-full flex flex-col gap-5 p-2">
@@ -94,6 +93,5 @@ export default function Contact(){
                             </section> */}
                         </motion.div>
         </div>
-    </AnimateSharedLayout>
     )
 }

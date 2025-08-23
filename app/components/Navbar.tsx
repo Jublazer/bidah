@@ -52,9 +52,9 @@ export default function Hero(){
                 
             </div>
 
-            <div className="w-full">
+            <div className="w-full ">
                 { linkNav ? (
-                        <div className="flex flex-col w-full h-screen bg-dark transform hover:bg-green-500 hover:text-white duration-3000 ease-in-out  md:hidden">
+                        <div className="flex flex-col w-full h-screen bg-dark transform hover:text-white duration-3000 ease-in-out  md:hidden">
                             { 
                             navLinks.map(item=>(
                                 <Link key={item.id} href={item.link} onClick={closeNav} className="flex flex-row mx-auto text-green-300 gap-5 w-full p-3 border-b">

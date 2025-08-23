@@ -19,32 +19,26 @@ const { data: session } = useSession()
 
   const [category, setCategory] = useState('')
   const [loggedIn, setLoggedIn] = useState(false);
+  const [selectedCat, setSelectedCat] = useState('Legumes')
 
   const handleSelect = (e:any)=>{
-    setCategory(e.category)
+    setCategory(e.category);
+    // setSelectedCat(e.category)
   }
 
-  // useEffect(()=>{
-  //   if(!loggedIn){
-  //     redirect('/auth/login')
-  //   }
-  // },[])
+  // const handleSelectedCat = (e:any)=>{
+    
+  // }
+
+  useEffect(()=>{
+    // if(!loggedIn){
+    //   redirect('/auth/login')
+    // }
+  },[])
 
 
   return (
     <div className="font-sans flex flex-col w-full items-center justify-center min-h-screen md:px-30 px-8  mx-auto">
-      
-      <div>
-
-        {!session ? (
-          <InteractiveButton onClick={() => signIn("google")}>Login with Google</InteractiveButton>
-        ) : (
-          <>
-            <p>Welcome {session.user?.name}</p>
-            <button onClick={() => signOut()}>Logout</button>
-          </>
-        )}
-      </div>
         
         <Hero />
             <span className="w-full flex flex-row items-center gap-2">
@@ -59,7 +53,7 @@ const { data: session } = useSession()
 
               {
               // product categories
-              <select name="category" className="text-dark-500 w-[200px] bg-white/10 p-3 rounded-sm border-white/50" value={category} onChange={(e) => setCategory(e.target.value)}>
+              <select name="category" className="text-dark-500 w-[200px] bg-white/10 p-3 rounded-sm border-white/50" value={category!=='' ? category : selectedCat } onChange={(e) => setCategory(e.target.value)}>
                 {produce.map((product) => (
                   <option key={product.pid} value={product.category} className="bg-gray-800 text-green-400">
                     {product.category}
@@ -73,9 +67,9 @@ const { data: session } = useSession()
               </span>
         </div>
         
-        <div className="place-items-center w-full grid md:grid-cols-4 min-h-screen space-3 gap-3 p-3 ">
+        <div className="place-items-center w-full grid md:grid-cols-4 sm:grid-cols-3 xl:grid-cols-5 min-h-screen space-3 gap-3 md:gap-5 lg:gap-5 sm:gap-3 p-3 ">
           {/* Categories Produce  Filter */}
-          {produce.filter((product) => product.category === category).map((filteredProduct) => (
+          {produce.filter((product) => product.category === (category!=='' ? category : selectedCat)).map((filteredProduct) => (
             <div key={filteredProduct.pid} className="relative flex items-center justify-center overflow-y-clip bg-white/30 text-dark w-[250px] h-[250px] border border-solid rounded-lg shadowed-xlg">
               <img src={filteredProduct.pic.src} width={100} alt="products" className="w-full rounded-sm h-50" />
               <div className="absolute top-30 w-full rounded-lg p-3 bg-[#121212]/90 glass duration-300 ease-in-out
