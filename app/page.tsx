@@ -15,8 +15,6 @@ import InteractiveButton from "./components/InteractionButton";
 
 export default function Home() {
 
-const { data: session } = useSession()
-
   const [category, setCategory] = useState('')
   const [loggedIn, setLoggedIn] = useState(false);
   const [selectedCat, setSelectedCat] = useState('Legumes')

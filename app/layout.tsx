@@ -31,10 +31,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-family-[poppins] antialiased flex flex-col items-center justify-center`}
       >
-        <SessionProvider>
+        
           <Hero />
           {children}
-        </SessionProvider>
+        
       </body>
     </html>
   );

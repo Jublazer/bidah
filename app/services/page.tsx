@@ -6,7 +6,7 @@ import ScrollFadeText from "../components/ScrollFadeSlide"
 export default function Services(){
 
     return(
-        <div className="w-full flex flex-col md:flex-row items-center justify-center md:px-40 p-5 ">
+        <div className="w-full flex flex-col md:flex-row items-center mt-20 justify-center md:px-40 p-5 ">
             <ScrollFadeText>
 
             

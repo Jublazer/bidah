@@ -29,7 +29,7 @@ export default function Hero(){
     return(
         <nav className="flex md:w-full w-[256px] flex-col md:flex-row mt-5 md:px-30 mb-5 items-center justify-center gap-30 backdrop-blur-10">
             <div className="flex w-full justify-center space-between items-center gap-10">
-                <Link href={'/'} className="font-extrabold justify-start text-green-300">
+                <Link href={'/'} className="glass font-extrabold justify-start text-green-300">
                     <Image src={logo.src} width={45} height={45} alt="site logo" />
                 </Link>
 

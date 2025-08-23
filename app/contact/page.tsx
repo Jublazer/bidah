@@ -16,11 +16,11 @@ export default function Contact(){
         <div className="md:w-full w-full pt-20 grid md:grid-cols-2 grid-cols-1 gap-4">
                         <div className=" w-full flex justify-start pl-10 flex-col gap-5 ">
                             <h1 className="text-4xl font-bold text-gray-700">Contact</h1>
-                            <Image src={contactLogo} width={850} height={450} alt="contact logo" />
+                            <Image src={contactLogo} width={850} height={450} loading="lazy" alt="contact logo" />
                         </div>
             
             
-                        <motion.div className=" w-full h-full overflow-y-clip flex flex-col gap-5 items-center  justify-center">
+                        <div className=" w-full h-full overflow-y-clip flex flex-col gap-5 items-center  justify-center">
                             <section className="w-[99%] md:max-w-[650px]" >
                                 <h1 className="md:text-4xl text-2xl font-bold md:font-extrabold text-green-500 text-justify">Contact us</h1>
                                 
@@ -31,9 +31,9 @@ export default function Contact(){
                                 <br />
                                 
                                     {/* Contact Form */}
-                                    <div className="container glass w-full h-[100vh] flex flex-col gap-5 items-center justify-center text-sm">
+                                    <div className="container shiny-effect w-full h-[100vh] flex flex-col gap-5 items-center justify-center text-sm">
                                       
-                                        <div className="flex p-0 flex-col shadow-2xl backdrop-blur-500 items-center min-h-[500px] justify-center gap-5 bg-white/20 md:w-full p-15  w-[100%] rounded-lg border border-white/20 border-left-green-500">
+                                        <div className="flex p-0 flex-col shadow-2xl  items-center min-h-[500px] justify-center gap-5 bg-white/20 md:w-full p-15  w-[100%] rounded-lg border border-white/20 border-left-green-500">
                                             <form action="" className="form p-5 w-full flex flex-col gap-5 p-2">
                                                 <label htmlFor="fullname">Full Name:</label>
                                                 <input type="text" name="usefullname" id="fullname" placeholder="John Doe" className=" w-full p-2 bg-dark-500 border rounded-sm shadow-lg" />
@@ -91,7 +91,7 @@ export default function Contact(){
             
                                 <p className="text-base text-justify p-0 leading-7">A connected agricultural community where every farmer and processor in Nigeria can thrive through access to markets, resources, and fair trade.</p>
                             </section> */}
-                        </motion.div>
+                        </div>
         </div>
     )
 }
