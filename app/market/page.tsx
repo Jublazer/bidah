@@ -1,10 +1,13 @@
 "use client"
 
+import { ProduceSearch } from "./Market"
+
 export default function Market(){
 
     return(
         <div className="w-full flex items-center justify-center">
-            <h1>Comming Soon, Please bear with us</h1>
+            <h1>Welcome to the Agro Market</h1>
+            <ProduceSearch />
         </div>
     )
 }

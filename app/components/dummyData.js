@@ -29,36 +29,36 @@ export const users = [
 
 export const produce = [
   // Grains
-  { pid: 1, uid: 2, pname: "Maize", price: 15000, qty: 100, category: "Grains", desc: "Dried yellow maize", time_stamp: "2025-08-12T09:00:00Z",pic:p1 },
-  { pid: 2, uid: 4, pname: "Guinea Corn", price: 14000, qty: 80, category: "Grains", desc: "High quality guinea corn", time_stamp: "2025-08-10T12:00:00Z",pic:p2 },
-  { pid: 3, uid: 2, pname: "Millet", price: 12000, qty: 90, category: "Grains", desc: "Clean millet grains", time_stamp: "2025-08-11T10:00:00Z",pic:p3 },
-  { pid: 4, uid: 1, pname: "Rice (local)", price: 25000, qty: 50, category: "Grains", desc: "Unpolished local rice", time_stamp: "2025-08-09T15:00:00Z",pic:p4 },
+  { pid: 1, uid: 2, popularity: 50, state: "Nasarawa", state: "Niger", pname: "Maize", price: 15000, qty: 100, category: "Grains", desc: "Dried yellow maize", time_stamp: "2025-08-12T09:00:00Z",pic:p1 },
+  { pid: 2, uid: 4, popularity: 70, state: "Kaduna", pname: "Guinea Corn", price: 14000, qty: 80, category: "Grains", desc: "High quality guinea corn", time_stamp: "2025-08-10T12:00:00Z",pic:p2 },
+  { pid: 3, uid: 2, popularity: 80, state: "Taraba", pname: "Millet", price: 12000, qty: 90, category: "Grains", desc: "Clean millet grains", time_stamp: "2025-08-11T10:00:00Z",pic:p3 },
+  { pid: 4, uid: 1, popularity: 50, state: "Niger", pname: "Rice (local)", price: 25000, qty: 50, category: "Grains", desc: "Unpolished local rice", time_stamp: "2025-08-09T15:00:00Z",pic:p4 },
 
   // Tubers
-  { pid: 5, uid: 3, pname: "Yam", price: 30000, qty: 60, category: "Tubers", desc: "Benue big yam", time_stamp: "2025-08-08T10:00:00Z",pic:p5 },
-  { pid: 6, uid: 3, pname: "Cassava", price: 12000, qty: 100, category: "Tubers", desc: "Fresh cassava tubers", time_stamp: "2025-08-12T11:00:00Z",pic:p6 },
-  { pid: 7, uid: 5, pname: "Sweet Potato", price: 10000, qty: 70, category: "Tubers", desc: "Orange-flesh sweet potato", time_stamp: "2025-08-13T09:00:00Z",pic:p7 },
+  { pid: 5, uid: 3, popularity: 60, state: "FCT", pname: "Yam", price: 30000, qty: 60, category: "Tubers", desc: "Benue big yam", time_stamp: "2025-08-08T10:00:00Z",pic:p5 },
+  { pid: 6, uid: 3, popularity: 70, state: "Niger", pname: "Cassava", price: 12000, qty: 100, category: "Tubers", desc: "Fresh cassava tubers", time_stamp: "2025-08-12T11:00:00Z",pic:p6 },
+  { pid: 7, uid: 5, popularity: 80, state: "Benue", pname: "Sweet Potato", price: 10000, qty: 70, category: "Tubers", desc: "Orange-flesh sweet potato", time_stamp: "2025-08-13T09:00:00Z",pic:p7 },
 
   // Legumes
-  { pid: 8, uid: 1, pname: "Soybeans", price: 18000, qty: 90, category: "Legumes", desc: "Organic soybeans", time_stamp: "2025-08-07T14:00:00Z",pic:p8 },
-  { pid: 9, uid: 2, pname: "Groundnut", price: 16000, qty: 110, category: "Legumes", desc: "Dry unshelled groundnut", time_stamp: "2025-08-13T10:30:00Z",pic:p9 },
-  { pid: 10, uid: 5, pname: "Beans (White)", price: 22000, qty: 100, category: "Legumes", desc: "White Nigerian beans", time_stamp: "2025-08-06T16:00:00Z",pic:p10 },
+  { pid: 8, uid: 1, popularity: 100, state: "Niger", pname: "Soybeans", price: 18000, qty: 90, category: "Legumes", desc: "Organic soybeans", time_stamp: "2025-08-07T14:00:00Z",pic:p8 },
+  { pid: 9, uid: 2, popularity: 100, state: "Taraba", pname: "Groundnut", price: 16000, qty: 110, category: "Legumes", desc: "Dry unshelled groundnut", time_stamp: "2025-08-13T10:30:00Z",pic:p9 },
+  { pid: 10, uid: 5, popularity: 100, state: "Adamawa", pname: "Beans (White)", price: 22000, qty: 100, category: "Legumes", desc: "White Nigerian beans", time_stamp: "2025-08-06T16:00:00Z",pic:p10 },
 
   // Fruits
-  { pid: 11, uid: 4, pname: "Mango", price: 8000, qty: 150, category: "Fruits", desc: "Fresh mangoes in bulk", time_stamp: "2025-08-01T08:00:00Z",pic:p11 },
-  { pid: 12, uid: 5, pname: "Orange", price: 7000, qty: 130, category: "Fruits", desc: "Citrus sweet oranges", time_stamp: "2025-08-02T08:30:00Z",pic:p9 },
-  { pid: 13, uid: 1, pname: "Pineapple", price: 10000, qty: 60, category: "Fruits", desc: "Juicy pineapples", time_stamp: "2025-08-03T07:45:00Z",pic:p1 },
+  { pid: 11, uid: 4, popularity: 70, state: "Benue", pname: "Mango", price: 8000, qty: 150, category: "Fruits", desc: "Fresh mangoes in bulk", time_stamp: "2025-08-01T08:00:00Z",pic:p11 },
+  { pid: 12, uid: 5, popularity: 60, state: "Kaduna", pname: "Orange", price: 7000, qty: 130, category: "Fruits", desc: "Citrus sweet oranges", time_stamp: "2025-08-02T08:30:00Z",pic:p9 },
+  { pid: 13, uid: 1, popularity: 80, state: "Jos", pname: "Pineapple", price: 10000, qty: 60, category: "Fruits", desc: "Juicy pineapples", time_stamp: "2025-08-03T07:45:00Z",pic:p1 },
 
   // Vegetables
-  { pid: 14, uid: 3, pname: "Tomatoes", price: 9000, qty: 100, category: "Vegetables", desc: "Red tomatoes", time_stamp: "2025-08-04T06:00:00Z",pic:p2 },
-  { pid: 15, uid: 2, pname: "Pepper", price: 8500, qty: 80, category: "Vegetables", desc: "Hot red peppers", time_stamp: "2025-08-05T10:00:00Z",pic:p3 },
-  { pid: 16, uid: 4, pname: "Okra", price: 7500, qty: 70, category: "Vegetables", desc: "Fresh okra", time_stamp: "2025-08-06T08:00:00Z",pic:p4 },
+  { pid: 14, uid: 3, popularity: 90, state: "Jos", pname: "Tomatoes", price: 9000, qty: 100, category: "Vegetables", desc: "Red tomatoes", time_stamp: "2025-08-04T06:00:00Z",pic:p2 },
+  { pid: 15, uid: 2, popularity: 100, state: "Benue", pname: "Pepper", price: 8500, qty: 80, category: "Vegetables", desc: "Hot red peppers", time_stamp: "2025-08-05T10:00:00Z",pic:p3 },
+  { pid: 16, uid: 4, popularity: 50, state: "Niger", pname: "Okra", price: 7500, qty: 70, category: "Vegetables", desc: "Fresh okra", time_stamp: "2025-08-06T08:00:00Z",pic:p4 },
 
   // Others
-  { pid: 17, uid: 5, pname: "Shea Nuts", price: 20000, qty: 40, category: "Others", desc: "Raw shea nuts", time_stamp: "2025-08-07T07:00:00Z",pic:p5 },
-  { pid: 18, uid: 1, pname: "Palm Oil", price: 27000, qty: 30, category: "Others", desc: "5L kegs of red palm oil", time_stamp: "2025-08-08T09:00:00Z",pic:p6 },
-  { pid: 19, uid: 2, pname: "Honey", price: 15000, qty: 25, category: "Others", desc: "Pure local honey", time_stamp: "2025-08-09T11:00:00Z",pic:p7 },
-  { pid: 20, uid: 4, pname: "Bambara Nuts", price: 14000, qty: 50, category: "Legumes", desc: "Local bambara groundnuts", time_stamp: "2025-08-10T13:00:00Z",pic:p8 },
+  { pid: 17, uid: 5, popularity: 70, state: "Niger", pname: "Shea Nuts", price: 20000, qty: 40, category: "Others", desc: "Raw shea nuts", time_stamp: "2025-08-07T07:00:00Z",pic:p5 },
+  { pid: 18, uid: 1, popularity: 60, state: "FCT", pname: "Palm Oil", price: 27000, qty: 30, category: "Others", desc: "5L kegs of red palm oil", time_stamp: "2025-08-08T09:00:00Z",pic:p6 },
+  { pid: 19, uid: 2, popularity: 80, state: "Kaduna", pname: "Honey", price: 15000, qty: 25, category: "Others", desc: "Pure local honey", time_stamp: "2025-08-09T11:00:00Z",pic:p7 },
+  { pid: 20, uid: 4, popularity: 90, state: "Kaduna", pname: "Bambara Nuts", price: 14000, qty: 50, category: "Legumes", desc: "Local bambara groundnuts", time_stamp: "2025-08-10T13:00:00Z",pic:p8 },
 ];
 
 

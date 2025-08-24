@@ -10,7 +10,7 @@ import { BiCategory } from "react-icons/bi";
 import { TbBrandAmongUs } from "react-icons/tb";
 import ComponentsScroll from "./components/ComponentEntranceExit";
 import BlogPage from "./api/blog/page";
-import { Categories } from "./market/Market";
+import { Categories, ProduceSearch } from "./market/Market";
 
 export default function Home() {
 
@@ -44,7 +44,6 @@ export default function Home() {
             </span>
 
         <Suspense fallback={<div className="loading loading-circle">Loading...</div>}>
-            
             <Categories />
         </Suspense>
        
