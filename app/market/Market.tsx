@@ -1,18 +1,10 @@
 "use client"
 
 import { BiCategory, BiSearch } from "react-icons/bi"
-import { produce } from "../components/dummyData"
+import { Produce, produceData } from "../components/dummyData"
 import React, { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-
-interface ProduceItem {
-    id: number;
-    pname: string;
-    category: string;
-    state: string;
-    price: number;
-    popularity: number;
-}
+import { div } from "framer-motion/client"
 
 export const metadata = {
     title: "Market",
@@ -28,36 +20,41 @@ export default function Market(){
 }
 
 // Get unique Categories and states for filters
-const cats = [...new Set(produce.map(item=>item.category))];
-const states = [...new Set(produce.map(item=>item.state))];
+const categories = [...new Set(produceData.map(item=>item.category))];
+const states = [...new Set(produceData.map(item=>item.state))].sort();
 
  export const ProduceSearch = ()=>{
     const [searchTerm, setSearchTerm] = useState("");
-    const [filteredResults, setFilterResult] = useState<ProduceItem[]>([]);
+    const [filteredResults, setFilterResults] = useState<Produce[]>([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [selectedState, setSelectedState] = useState("All");
     const [sortOption, setSortOption] = useState("popularity");
+    const [isLoading, SetIsLoading] = useState(false);
     const router = useRouter();
+
+    // Innitialize mounting of state
+    useEffect(()=>{
+        console.log("Produce data loaded:",produceData.length,'items')
+
+        setFilterResults(produceData);
+        SetIsLoading(false)
+    },[]);
 
     // filter and sort result
     useEffect(()=>{
-        let results = produce;
+        let results = [...produceData];
 
         // apply search filter
         if(searchTerm){
             results = results.filter(item=>item.pname.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()));
         }
 
-        // // Apply category filter
-        // if(selectedCategory !== 'All'){
-        //     results = results.filter(item=>item.category.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()));
-        // }
+        // Apply Search filter
+        if(searchTerm.trim()){
+            results = results.filter(item=>item.pname.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase().trim()))
+        }
 
-        // // Apply state filter
-        // if(selectedState !== 'All'){
-        //     results = results.filter(item=>item.state.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()));
-        // }
-
+        // Apply Categry
         if(selectedCategory !== 'All'){
             results = results.filter(item => item.category === selectedCategory);
         }
@@ -77,23 +74,24 @@ const states = [...new Set(produce.map(item=>item.state))];
                 results.sort((a,b)=>b.price-a.price);
             break;
             case "popularity":
-                results.sort((a,b)=>b.popularity-a.popularity)
-            break;
             default:
+                results.sort((a,b)=>b.popularity-a.popularity)
             break;
         }
 
-        setFilterResult(results);
+        setFilterResults(results);
     },[searchTerm,selectedCategory,selectedState,sortOption]);
 
-    const handleSearch = (e:any)=>{
+    const handleSearch = (e:React.ChangeEvent<HTMLInputElement>)=>{
         setSearchTerm(e.target.value);
     }
 
     // Handle Produce click
 
-    const handleProduceCLick = (id:Number)=>{
-       router.push(`/market/${id}`);
+    const handleProduceCLick = (pid:number)=>{
+       router.push(`/market/${pid}`, {
+        scroll: true,
+       });
     };
 
     const clearFilters = ()=>{
@@ -103,76 +101,89 @@ const states = [...new Set(produce.map(item=>item.state))];
         setSortOption('popularity')
     };
 
+    if(isLoading){
+        return
+        (
+            <div className="min-h-screen bg-white/20 py-8 px-4 flex items-centerjustify-center">
+                <div className="text-center">
+                    <div className="animated-spin rounded-full h-12 w-12 border-b-2 border-green mx-auto"></div>
+                    <p className="mt-4 text-green-800">No Vex! Loading produce data...</p>
+                </div>
+
+            </div>
+        );
+    }
+
     return(
-        <div className="h-auto bg-green-50 py-8 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
+        <div className="w-full h-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div className="w-full glass mx-auto">
                 <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold text-green-800 mb-2">Agricultural Produce Search</h1>
-                <p className="text-green-600">Find the best produce from farms around the world</p>
+                    <h1 className="text-3xl font-bold text-green-800 mb-2">Agricultural Produce Search</h1>
+                    <p className="text-green-600">Find the best produce from farms in Nigeria</p>
                 </div>
                 
                 {/* Search and Filter Section */}
-                <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="rounded-lg shadow-md p-6 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                     <div>
-                    <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-1">
-                        Search Produce
-                    </label>
-                    <input
-                        type="text"
-                        id="search"
-                        value={searchTerm}
-                        onChange={handleSearch}
-                        placeholder="Search by name..."
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                    />
+                        <label htmlFor="search" className="block text-sm font-medium text-white-200 mb-1">
+                            Search Produce
+                        </label>
+                        <input
+                            type="text"
+                            id="search"
+                            value={searchTerm}
+                            onChange={handleSearch}
+                            placeholder="Search by name..."
+                            className="w-full p-1 border border-white-200 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        />
                     </div>
                     
                     <div>
-                    <label htmlFor="sort" className="block text-sm font-medium text-gray-700 mb-1">
-                        Sort By
-                    </label>
-                    <select
-                        id="sort"
-                        value={sortOption}
-                        onChange={(e) => setSortOption(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                    >
-                        <option value="popularity">Popularity</option>
-                        <option value="name">Name (A-Z)</option>
-                        <option value="price-low">Price (Low to High)</option>
-                        <option value="price-high">Price (High to Low)</option>
-                    </select>
+                        <label htmlFor="sort" className="block text-sm font-medium text-white-200 mb-1">
+                            Sort By
+                        </label>
+                        <select
+                            id="sort"
+                            value={sortOption}
+                            onChange={(e) => setSortOption(e.target.value)}
+                            className="w-full p-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        >
+                            <option value="popularity">Popularity</option>
+                            <option value="name">Name (A-Z)</option>
+                            <option value="price-low">Price (Low to High)</option>
+                            <option value="price-high">Price (High to Low)</option>
+                        </select>
                     </div>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
-                    <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="category" className="block text-sm font-medium text-white-700 mb-1">
                         Filter by Category
                     </label>
                     <select
                         id="category"
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        className="w-full p-1 border border-gray-300 rounded-md focus:ring-2 bg-dark focus:ring-green-500 focus:border-green-500"
                     >
                         <option value="All">All Categories</option>
-                        {cats.map(category => (
-                        <option key={category} value={category}>{category}</option>
+                        {categories.map(category => (
+                        <option  key={category} value={category}>{category}</option>
                         ))}
                     </select>
                     </div>
                     
                     <div>
-                    <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="state" className="block text-sm font-medium text-white-700 mb-1">
                         Filter by State/Region
                     </label>
                     <select
                         id="state"
                         value={selectedState}
                         onChange={(e) => setSelectedState(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                        className="w-full p-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500"
                     >
                         <option value="All">All States/Regions</option>
                         {states.map(state => (
@@ -193,7 +204,7 @@ const states = [...new Set(produce.map(item=>item.state))];
                 </div>
                 
                 {/* Results Section */}
-                <div className="bg-white rounded-lg shadow-md p-6">
+                <div className="bg-white/80 rounded-lg shadow-md p-6">
                 <h2 className="text-xl font-semibold text-green-800 mb-4">
                     {filteredResults.length} {filteredResults.length === 1 ? 'Result' : 'Results'}
                 </h2>
@@ -207,9 +218,9 @@ const states = [...new Set(produce.map(item=>item.state))];
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {filteredResults.map((item) => (
                         <div
-                        key={item.id}
-                        onClick={() => handleProduceCLick(item.id)}
-                        className="border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer"
+                        key={item.pid}
+                        onClick={() => handleProduceCLick(item.pid)}
+                        className="border border-gray-100 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer"
                         >
                         <div className="flex justify-between items-start">
                             <h3 className="text-lg font-semibold text-green-800">{item.pname}</h3>
@@ -219,7 +230,7 @@ const states = [...new Set(produce.map(item=>item.state))];
                         </div>
                         <div className="mt-2 text-sm text-gray-600">
                             <p>From: {item.state}</p>
-                            <p className="mt-1">Price: ${item.price.toFixed(2)} per unit</p>
+                            <p className="mt-1">Price: N{item.price.toFixed(2)} per unit</p>
                             <div className="flex items-center mt-1">
                             <span className="mr-1">Popularity:</span>
                             <div className="w-24 bg-gray-200 rounded-full h-2.5">
@@ -269,9 +280,9 @@ export const Categories = ()=>{
                         {
                         // product categories
                         <select name="category" className="text-dark-500 w-[200px] bg-white/10 p-3 rounded-sm border-white/50" value={category!=='' ? category : selectedCat } onChange={(e) => setCategory(e.target.value)}>
-                        {produce.map((product) => (
-                            <option key={product.pid} value={product.category} className="bg-gray-800 text-green-400">
-                            {product.category}
+                        {produceData.map((produceData) => (
+                            <option key={produceData.pid} value={produceData.category} className="bg-gray-800 text-green-400">
+                            {produceData.category}
                             </option>
                             ))}
                             </select>
@@ -284,7 +295,7 @@ export const Categories = ()=>{
                 
                 <div className="place-items-center w-full grid md:grid-cols-4 sm:grid-cols-3 xl:grid-cols-5 min-h-screen space-3 gap-3 md:gap-5 lg:gap-5 sm:gap-3 p-3 ">
                     {/* Categories Produce  Filter */}
-                    {produce.filter((product) => product.category === (category!=='' ? category : selectedCat)).map((filteredProduct) => (
+                    {produceData.filter((product) => product.category === (category!=='' ? category : selectedCat)).map((filteredProduct) => (
                     <div key={filteredProduct.pid} className="relative flex items-center justify-center overflow-y-clip bg-white/30 text-dark w-[250px] h-[250px] border border-solid rounded-lg shadowed-xlg">
                         <img src={filteredProduct.pic.src} width={100} alt="products" className="w-full rounded-sm h-50" />
                         <div className="absolute top-30 w-full rounded-lg p-3 bg-[#121212]/90 glass duration-300 ease-in-out

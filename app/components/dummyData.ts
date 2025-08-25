@@ -9,6 +9,21 @@ import p8 from '../../public/assets/products/p8.jpg'
 import p9 from '../../public/assets/products/p9.jpg'
 import p10 from '../../public/assets/products/p10.jpg'
 import p11 from '../../public/assets/products/p11.jpg'
+import { StaticImageData } from 'next/image'
+
+export interface Produce {
+        pid: number;
+        uid: number;
+        pname: string;
+        category: string;
+        state: string;
+        price: number;
+        popularity: number;
+        qty: number;
+        desc: string;
+        time_stamp: string;
+        pic: StaticImageData;
+    }
 
 export const users = [
   // Sellers
@@ -27,9 +42,9 @@ export const users = [
 ];
 
 
-export const produce = [
+export const produceData: Produce[] = [
   // Grains
-  { pid: 1, uid: 2, popularity: 50, state: "Nasarawa", state: "Niger", pname: "Maize", price: 15000, qty: 100, category: "Grains", desc: "Dried yellow maize", time_stamp: "2025-08-12T09:00:00Z",pic:p1 },
+  { pid: 1, uid: 2, popularity: 50, state: "Nasarawa", pname: "Maize", price: 15000, qty: 100, category: "Grains", desc: "Dried yellow maize", time_stamp: "2025-08-12T09:00:00Z",pic:p1 },
   { pid: 2, uid: 4, popularity: 70, state: "Kaduna", pname: "Guinea Corn", price: 14000, qty: 80, category: "Grains", desc: "High quality guinea corn", time_stamp: "2025-08-10T12:00:00Z",pic:p2 },
   { pid: 3, uid: 2, popularity: 80, state: "Taraba", pname: "Millet", price: 12000, qty: 90, category: "Grains", desc: "Clean millet grains", time_stamp: "2025-08-11T10:00:00Z",pic:p3 },
   { pid: 4, uid: 1, popularity: 50, state: "Niger", pname: "Rice (local)", price: 25000, qty: 50, category: "Grains", desc: "Unpolished local rice", time_stamp: "2025-08-09T15:00:00Z",pic:p4 },
