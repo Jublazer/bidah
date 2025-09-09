@@ -1,11 +1,21 @@
-"use client"
+// "use client"
 
-export default function Login(){
-    const handleGoogleLogin = () => {
-    window.location.href = 'http://10.69.96.154:3000/auth/google'
-  }
+import { SignIn, SignedOut } from "@clerk/nextjs"
+
+
+
+export default function Login() {
+    const integrated = false
+
     return(
         <>
+        {
+            !integrated ? (
+                <SignedOut>
+                    <SignIn />
+                </SignedOut>
+            ) : (
+
             <div className="container w-full h-[100vh] flex flex-col gap-5 items-center justify-center text-sm">
                 <h1>Login User</h1>
                 <div className="flex p-0 flex-col shadow-lg backdrop-blur items-center min-h-[500px] justify-center gap-5 bg-white/20 md:w-[40%]  w-[100%] rounded-lg border">
@@ -19,12 +29,11 @@ export default function Login(){
                         <button type="submit" className="btn border border-solid bg-transparent trasition-w p-3 rounded-sm cursor-pointer hover:bg-white text-dark">Login</button>
                     </form>
                     <br />
-                    <hr />
-                    <center>Or</center>
-                    <button onClick={handleGoogleLogin}>Login with Google</button>
+                    
                 </div>
 
-            </div>
+            </div>)
+            }
         </>
     )
 }

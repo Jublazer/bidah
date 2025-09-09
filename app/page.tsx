@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React, { useState, useEffect, Suspense} from "react";
-import {produce} from './components/dummyData'
+import {produceData} from './components/dummyData'
 import { FaHome } from "react-icons/fa";
 import Hero from "./components/Hero";
 import { BiCategory } from "react-icons/bi";
@@ -11,6 +11,7 @@ import { TbBrandAmongUs } from "react-icons/tb";
 import ComponentsScroll from "./components/ComponentEntranceExit";
 import BlogPage from "./api/blog/page";
 import { Categories, ProduceSearch } from "./market/Market";
+import { SignedIn } from "@clerk/nextjs";
 
 export default function Home() {
 
@@ -42,10 +43,11 @@ export default function Home() {
               <TbBrandAmongUs />
               <hr className="w-[100%] border-green-500" />
             </span>
-
-        <Suspense fallback={<div className="loading loading-circle">Loading...</div>}>
-            <Categories />
-        </Suspense>
+        <SignedIn>
+          <Suspense fallback={<div className="loading loading-circle">Loading...</div>}>
+              <Categories />
+          </Suspense>
+        </SignedIn>
        
         <ComponentsScroll>
             {/* <BlogPage /> */}

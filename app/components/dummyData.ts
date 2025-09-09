@@ -25,6 +25,14 @@ export interface Produce {
         pic: StaticImageData;
     }
 
+export interface usersType {
+  uid: number;
+  username: string;
+  email: string;
+  phone: string;
+  role: "seller" | "buyer";
+}
+
 export const users = [
   // Sellers
   { uid: 1, username: "farmer_john", email: "john@example.com", phone: "08011110001", role: "seller" },

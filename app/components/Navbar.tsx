@@ -6,6 +6,8 @@ import { hover, useScroll } from "framer-motion"
 import logo from '../../public/Bidah Logo-01.png'
 import Image from "next/image"
 import { AiFillHome, AiOutlineBank, AiOutlineClose, AiOutlineContacts, AiOutlineHome, AiOutlineInfo, AiOutlineMenu, AiOutlineMessage, AiOutlineMoneyCollect, AiOutlineShop } from "react-icons/ai"
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton,  } from "@clerk/nextjs"
+import UserMenuItems from "./UserMenuItems"
 
 
 export default function Hero(){
@@ -38,18 +40,38 @@ export default function Hero(){
                     linkNav ? <AiOutlineClose onClick={()=>setLinkNav(false)} size={25} /> : <AiOutlineMenu onClick={()=>setLinkNav(true)} size={25}/>
                    } 
                 </div>
-            </div>
-            <div className="hidden md:flex gap-4">
-                {
-                    navLinks.map(item=>(
-                        <Link key={item.id} href={item.link} className="relative group mx-auto">
-                            {item.icn} 
-                            <span className=" absolute bottom-[-12px] mt-1 left-0 w-full h-1 transform scale-y-0 group-hover:scale-y-100 
-                            transition transform duration-300 ease-in-out"><p className="font-regular text-xs text-green-500">{item.title}</p></span>
-                        </Link>
-                    ))
-                }
+            <div className="hidden md:flex justify gap-4">
+                {navLinks.map(item => (
+                    <Link key={item.id} href={item.link} className="relative group mx-auto">
+                        {item.icn}
+                        <span className=" absolute bottom-[-12px] mt-1 left-0 w-full h-1 transform scale-y-0 group-hover:scale-y-100 
+                        transition transform duration-300 ease-in-out"><p className="font-regular text-xs text-green-500">{item.title}</p></span>
+                    </Link>
+                ))}
+                <div className="justify-end items-center">
+
+                    <SignedOut>
+                        <div className="flex gap-2">
+                            <SignInButton />
+                            <SignUpButton>
+                                <button className="bg-green-800 text-ceramic-white rounded-full font-medium text-sm sm:text-base md:w-[100px] p-2 sm:p-2 cursor-pointer">
+                                    Sign Up
+                                </button>
+                            </SignUpButton>
+                        </div>
+                    </SignedOut>
+                    <SignedIn>
+                        <UserButton customMenuItems={[
+                            {
+                                label: "Custom Menu",
+                                // Optionally add href, onClick, etc.
+                                // Example: onClick: () => { ... }
+                            }
+                        ]} />
+                    </SignedIn>
                 
+                </div>
+            </div>
             </div>
 
             <div className="w-full ">

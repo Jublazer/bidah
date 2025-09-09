@@ -15,8 +15,6 @@ export const metadata = {
 export default function Market(){
     const [searchTerm, setSearchTerm] = useState("")
     const [searchResults, setSearchResults] = useState([])
-    
-
 }
 
 // Get unique Categories and states for filters
