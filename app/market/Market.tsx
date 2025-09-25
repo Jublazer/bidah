@@ -32,8 +32,6 @@ const states = [...new Set(produceData.map(item=>item.state))].sort();
 
     // Innitialize mounting of state
     useEffect(()=>{
-        console.log("Produce data loaded:",produceData.length,'items')
-
         setFilterResults(produceData);
         SetIsLoading(false)
     },[]);

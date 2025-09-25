@@ -2,15 +2,12 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { produceData } from "../../components/dummyData";
-import { BsBack } from "react-icons/bs";
 import { BiArrowBack } from "react-icons/bi";
 
 export default function ProducePage(){
     const params = useParams()
     const router = useRouter()
     const { pid } = params;
-    
-    console.log(pid)
 
     // find the produce item by id
     const produceItem = produceData.find(item=>item.pid===Number(pid));

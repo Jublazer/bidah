@@ -1,16 +1,11 @@
 "use client"
 
-import Image from "next/image";
-import { redirect } from "next/navigation";
+
 import React, { useState, useEffect, Suspense} from "react";
-import {produceData} from './components/dummyData'
-import { FaHome } from "react-icons/fa";
 import Hero from "./components/Hero";
-import { BiCategory } from "react-icons/bi";
 import { TbBrandAmongUs } from "react-icons/tb";
 import ComponentsScroll from "./components/ComponentEntranceExit";
-import BlogPage from "./api/blog/page";
-import { Categories, ProduceSearch } from "./market/Market";
+import { Categories} from "./market/Market";
 import { SignedIn } from "@clerk/nextjs";
 
 export default function Home() {
@@ -23,16 +18,6 @@ export default function Home() {
     setCategory(e.category);
     // setSelectedCat(e.category)
   }
-
-  // const handleSelectedCat = (e:any)=>{
-    
-  // }
-
-  useEffect(()=>{
-    // if(!loggedIn){
-    //   redirect('/auth/login')
-    // }
-  },[])
 
 
   return (

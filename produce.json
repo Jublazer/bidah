@@ -1,0 +1,31 @@
+// data/middlebelt-produces.ts
+ const middlebeltProduces = [
+  {
+    name: 'Benue Yam',
+    category: 'tubers',
+    states: ['Benue', 'Nasarawa', 'Kogi'],
+    seasons: ['January', 'June', 'December'],
+    priceRange: { min: 500, max: 2000 } // per kg
+  },
+  {
+    name: 'Soya Beans',
+    category: 'grains', 
+    states: ['Benue', 'Plateau', 'Niger'],
+    seasons: ['September', 'October'],
+    priceRange: { min: 300, max: 800 }
+  },
+  {
+    name: 'Groundnut',
+    category: 'grains',
+    states: ['Kogi', 'Kwara', 'Nasarawa'],
+    seasons: ['October', 'November'],
+    priceRange: { min: 400, max: 900 }
+  },
+  {
+    name: 'Cassava',
+    category: 'tubers',
+    states: ['Benue', 'Kogi', 'Taraba'],
+    seasons: ['All Year'],
+    priceRange: { min: 200, max: 600 }
+  }
+];

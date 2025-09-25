@@ -2,6 +2,7 @@
 
 import { BiCategory } from "react-icons/bi"
 import ScrollFadeText from "../components/ScrollFadeSlide"
+import Blog from "./Blog"
 
 export default function Services(){
 
@@ -12,8 +13,13 @@ export default function Services(){
                 <div className="md:w-[20%] w-[20%] mb-30 flex  justify-center h-[200px] md:h-screen ">
                     <h1 className="text-8xl font-bold text-gray-700">Services</h1>
                 </div>
+
+                
             
             </ScrollFadeText>
+            <div className="w-full flex justify-center items-center flex-col">
+                <Blog />
+            </div>
 
 
             <div className="md:w-[80%] w-full h-screen flex flex-col gap-5 items-center  justify-center">
