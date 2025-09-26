@@ -6,8 +6,7 @@ import { hover, useScroll } from "framer-motion"
 import logo from '@/public/Bidah Logo-01.png'
 import Image from "next/image"
 import { AiFillHome, AiOutlineBank, AiOutlineClose, AiOutlineContacts, AiOutlineHome, AiOutlineInfo, AiOutlineMenu, AiOutlineMessage, AiOutlineMoneyCollect, AiOutlineShop } from "react-icons/ai"
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton,  } from "@clerk/nextjs"
-import UserMenuItems from "./UserMenuItems"
+import { ThemeToggle } from "./theme-toggle"
 
 
 export default function Hero(){
@@ -29,7 +28,7 @@ export default function Hero(){
 
     ]
     return(
-        <nav className="flex md:w-full w-[256px] flex-col md:flex-row mt-5 md:px-30 mb-5 items-center justify-between gap-30 backdrop-blur-10">
+        <nav className="flex md:w-full w-[256px] bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex-col md:flex-row mt-5 md:px-30 mb-5 items-center justify-between gap-30 backdrop-blur-10">
             <div className="flex w-full items-center justify-between items-center gap-10">
                 <Link href={'/'} className="glass font-extrabold justify-start text-green-300">
                     <Image src={logo.src} width={45} height={45} alt="site logo" />
@@ -40,38 +39,15 @@ export default function Hero(){
                     linkNav ? <AiOutlineClose onClick={()=>setLinkNav(false)} size={25} /> : <AiOutlineMenu onClick={()=>setLinkNav(true)} size={25}/>
                    } 
                 </div>
-            <div className="hidden md:flex justify gap-4">
-                {navLinks.map(item => (
-                    <Link key={item.id} href={item.link} className="relative group mx-auto">
-                        {item.icn}
-                        <span className=" absolute bottom-[-12px] mt-1 left-0 w-full h-1 transform scale-y-0 group-hover:scale-y-100 
-                        transition transform duration-300 ease-in-out"><p className="font-regular text-xs text-green-500">{item.title}</p></span>
-                    </Link>
-                ))}
-                <div className="justify-end items-center">
-
-                    <SignedOut>
-                        <div className="flex gap-2">
-                            <SignInButton />
-                            <SignUpButton>
-                                <button className="bg-green-800 text-ceramic-white rounded-full font-medium text-sm sm:text-base md:w-[100px] p-2 sm:p-2 cursor-pointer">
-                                    Sign Up
-                                </button>
-                            </SignUpButton>
-                        </div>
-                    </SignedOut>
-                    <SignedIn>
-                        <UserButton customMenuItems={[
-                            {
-                                label: "Custom Menu",
-                                // Optionally add href, onClick, etc.
-                                // Example: onClick: () => { ... }
-                            }
-                        ]} />
-                    </SignedIn>
-                
+                <div className="hidden md:flex justify gap-4">
+                    {navLinks.map(item => (
+                        <Link key={item.id} href={item.link} className="relative group mx-auto">
+                            {item.icn}
+                            <span className=" absolute bottom-[-12px] mt-1 left-0 w-full h-1 transform scale-y-0 group-hover:scale-y-100 
+                            transition transform duration-300 ease-in-out"><p className="font-regular text-xs text-green-500">{item.title}</p></span>
+                        </Link>
+                    ))}
                 </div>
-            </div>
             </div>
 
             <div className="w-full ">
@@ -88,6 +64,7 @@ export default function Hero(){
                         </div>
                     ) : null
                 }
+                <ThemeToggle />
             </div>
         </nav>
     )

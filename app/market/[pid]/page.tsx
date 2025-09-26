@@ -17,7 +17,7 @@ export default function ProducePage(){
     }
 
     return(
-        <div className="card w-3xl p-3 bg-white/10 justify-center items-center w-[70%] glass">
+        <div className="card w-3xl p-3 bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 justify-center items-center w-[70%] glass">
             <div className="w-full p-3 bg-white/10 mb-10 justify-start"><button className="scale-100 transform-scale transition hover:scale-180 duration-300 ease-in-out" onClick={()=>router.back()}><BiArrowBack /> </button></div>
             <div className="w-full flex flex-row justify-between mb-10 item-center container">
                 <img className="scale-100 transform-scale transition hover:scale-180 select:translate-y-50 duration-300 ease-in-out" src={produceItem.pic.src} width={100} height={100} loading="lazy" alt="" />

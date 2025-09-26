@@ -100,7 +100,7 @@ const states = [...new Set(produceData.map(item=>item.state))].sort();
     if(isLoading){
         return
         (
-            <div className="min-h-screen bg-white/20 py-8 px-4 flex items-centerjustify-center">
+            <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 px-4 flex items-centerjustify-center">
                 <div className="text-center">
                     <div className="animated-spin rounded-full h-12 w-12 border-b-2 border-green mx-auto"></div>
                     <p className="mt-4 text-green-800">No Vex! Loading produce data...</p>
@@ -111,10 +111,10 @@ const states = [...new Set(produceData.map(item=>item.state))].sort();
     }
 
     return(
-        <div className="w-full h-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div className="w-full bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 h-auto py-8 px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold text-white-800 mb-2">Agricultural Produce Search</h1>
-                <p className="text-white-400">Find the best produce from farms in Nigeria</p>
+                <h1 className="text-3xl font-bold text-gray-500 dark:text-white-800 mb-2">Agricultural Produce Search</h1>
+                <p className="text-gray-700 dark:text-white-400">Find the best produce from farms in Nigeria</p>
             </div>
 
             <div className="w-full relative mx-auto flex flex-col justify-center items-center md:flex-row">
@@ -124,7 +124,7 @@ const states = [...new Set(produceData.map(item=>item.state))].sort();
 
                     <div className="flex flex-col justify-start w-full gap-4 mb-6">
                                 <div className="flex flex-col w-full">
-                                    <label htmlFor="search" className="block w-full text-sm font-medium text-white-200 mb-1">
+                                    <label htmlFor="search" className="block w-full text-sm font-medium text-gray-600 dark:text-white-200 mb-1">
                                         Search Produce
                                     </label>
                                     <input
@@ -138,7 +138,7 @@ const states = [...new Set(produceData.map(item=>item.state))].sort();
                                 </div>
                         
                                 <div className="flex flex-col w-full">
-                                    <label htmlFor="sort" className="block w-full text-sm font-medium text-white-200 mb-1">
+                                    <label htmlFor="sort" className="block w-full text-sm font-medium dark:text-white-200 mb-1">
                                         Sort By
                                     </label>
                                     <select
@@ -155,7 +155,7 @@ const states = [...new Set(produceData.map(item=>item.state))].sort();
                                 </div>
 
                                 <div className="flex flex-col w-full">
-                                    <label htmlFor="category" className="block text-sm font-medium text-white-700 mb-1">
+                                    <label htmlFor="category" className="block text-sm font-medium dark:text-white-700 mb-1">
                                         Filter by Category
                                     </label>
                                     <select

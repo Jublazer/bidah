@@ -21,7 +21,7 @@ export default function Home() {
 
 
   return (
-    <div className="font-sans flex flex-col w-full items-center justify-center min-h-screen md:px-30 px-8  mx-auto">
+    <div className="font-sans flex flex-col w-full bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 items-center justify-center min-h-screen md:px-30 px-8  mx-auto">
         
         <Hero />
             <span className="w-full flex flex-row items-center gap-2">

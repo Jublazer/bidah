@@ -7,7 +7,7 @@ import Blog from "./Blog"
 export default function Services(){
 
     return(
-        <div className="w-full flex flex-col md:flex-row items-center mt-20 md:mt-30 justify-center md:px-40 p-5 ">
+        <div className="w-full bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col md:flex-row items-center mt-20 md:mt-30 justify-center md:px-40 p-5 ">
             <ScrollFadeText>
 
                 <div className="md:w-[20%] w-[20%] mb-30 flex  justify-center h-[200px] md:h-screen ">

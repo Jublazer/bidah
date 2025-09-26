@@ -14,7 +14,7 @@ import ComponentsScroll from "../../components/ComponentEntranceExit"
 export default function Contact(){
 
     return(
-        <div className="md:w-full w-full pt-20 grid md:grid-cols-2 grid-cols-1 gap-4">
+        <div className="md:w-full w-full bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20 grid md:grid-cols-2 grid-cols-1 gap-4">
                         <div className=" w-full flex justify-start pl-10 flex-col gap-5 ">
                             <ComponentsScroll>
                                 <h1 className="text-4xl font-bold text-gray-700">Contact</h1>

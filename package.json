@@ -11,6 +11,7 @@
   "dependencies": {
     "@clerk/nextjs": "^6.31.4",
     "@remixicon/react": "^4.6.0",
+    "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",

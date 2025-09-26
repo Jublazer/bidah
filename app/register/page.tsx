@@ -8,7 +8,7 @@ import { apiClient } from '@/lib/api-client';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 const middlebeltStates = [
-  'Benue', 'Kogi', 'Kwara', 'Nasarawa', 'Niger', 'Plateau', 'Taraba', 'Other'
+  'Adamawa','Benue', 'Kogi', 'Kwara', 'Nasarawa', 'Niger', 'Plateau', 'Southern Kaduna', 'Southern Borno', 'Southern Gombe','Southern Bauchi', 'Taraba', 'Other'
 ];
 
 export default function RegisterPage() {
@@ -35,19 +35,25 @@ export default function RegisterPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    
-    if (name.includes('.')) {
-      const keys = name.split('.');
-      setFormData(prev => ({
-        ...prev,
-        [keys[0]]: {
-          ...prev[keys[0] as keyof typeof formData],
-          [keys[1]]: value
-        }
-      }));
-    } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
-    }
+    const keys = name.split('.');
+
+    setFormData(prev => {
+      const updated = { ...prev };
+      let nested: any = updated;
+
+      for (let i = 0; i < keys.length - 1; i++) {
+        const key = keys[i];
+
+        // Create a shallow copy if nested[key] exists, else initialize as object
+        nested[key] = { ...nested[key] };
+        nested = nested[key];
+      }
+
+      nested[keys[keys.length - 1]] = value;
+
+      return updated;
+    });
+
     setError('');
   };
 
@@ -64,12 +70,14 @@ export default function RegisterPage() {
 
     try {
       const response = await apiClient.post('auth/register', formData);
-      
+
       if (response.success) {
         localStorage.setItem('kidah_token', response.data.token);
         localStorage.setItem('kidah_user', JSON.stringify(response.data.user));
-        
+
         router.push(`/${response.data.user.userType}/dashboard`);
+      } else {
+        setError(response.message || 'Registration failed. Please try again.');
       }
     } catch (err: any) {
       setError(err.message || 'Registration failed. Please try again.');
@@ -79,7 +87,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
+    <div className="min-h-screen w-full bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
       <div className="absolute top-6 right-6">
         <ThemeToggle />
       </div>
@@ -276,16 +284,17 @@ export default function RegisterPage() {
                     type={showPassword ? 'text' : 'password'}
                     name="password"
                     required
-                    minLength={6}
                     value={formData.password}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-12 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    placeholder="Minimum 6 characters"
+                    className="w-full pl-10 pr-10 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="********"
+                    autoComplete="new-password"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
@@ -304,42 +313,33 @@ export default function RegisterPage() {
                     required
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    placeholder="Confirm your password"
+                    className="w-full pl-10 pr-10 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="********"
+                    autoComplete="new-password"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:from-green-700 hover:to-blue-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-md transition disabled:opacity-50"
             >
-              {isLoading ? (
-                <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Creating Account...
-                </div>
-              ) : (
-                `Create ${formData.userType === 'farmer' ? 'Farmer' : 'Buyer'} Account`
-              )}
+              {isLoading ? 'Registering...' : 'Register'}
             </button>
           </form>
 
-          {/* Login Link */}
-          <div className="mt-6 text-center">
-            <p className="text-gray-600 dark:text-gray-400">
-              Already have an account?{' '}
-              <Link 
-                href="/login" 
-                className="font-medium text-green-600 hover:text-green-500 dark:text-green-400 dark:hover:text-green-300"
-              >
-                Sign in here
-              </Link>
-            </p>
-          </div>
+          <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
+            Already have an account?{' '}
+            <Link
+              href="/login"
+              className="text-green-600 hover:text-green-700 font-medium"
+            >
+              Log in
+            </Link>
+          </p>
         </div>
       </div>
     </div>
