@@ -2,9 +2,9 @@
 
 
 import React, { useState, useEffect, Suspense} from "react";
-import Hero from "./components/Hero";
+import Hero from "../components/Hero";
 import { TbBrandAmongUs } from "react-icons/tb";
-import ComponentsScroll from "./components/ComponentEntranceExit";
+import ComponentsScroll from "../components/ComponentEntranceExit";
 import { Categories} from "./market/Market";
 import { SignedIn } from "@clerk/nextjs";
 

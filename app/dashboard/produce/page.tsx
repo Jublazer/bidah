@@ -1,6 +1,6 @@
 "use client"
 
-import { produceData, users, usersType } from "@/app/components/dummyData"
+import { produceData, users, usersType } from "@/components/dummyData"
 import React, {useState} from "react"
 import { BsPlusCircle } from "react-icons/bs";
 

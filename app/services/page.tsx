@@ -1,7 +1,7 @@
 "use client"
 
 import { BiCategory } from "react-icons/bi"
-import ScrollFadeText from "../components/ScrollFadeSlide"
+import ScrollFadeText from "../../components/ScrollFadeSlide"
 import Blog from "./Blog"
 
 export default function Services(){

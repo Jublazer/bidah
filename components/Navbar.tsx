@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { hover, useScroll } from "framer-motion"
-import logo from '../../public/Bidah Logo-01.png'
+import logo from '@/public/Bidah Logo-01.png'
 import Image from "next/image"
 import { AiFillHome, AiOutlineBank, AiOutlineClose, AiOutlineContacts, AiOutlineHome, AiOutlineInfo, AiOutlineMenu, AiOutlineMessage, AiOutlineMoneyCollect, AiOutlineShop } from "react-icons/ai"
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton,  } from "@clerk/nextjs"

@@ -1,7 +1,7 @@
 "use client"
 
 import { Suspense } from "react"
-import ComponentsScroll from "../components/ComponentEntranceExit"
+import ComponentsScroll from "../../components/ComponentEntranceExit"
 import { ProduceSearch } from "./Market"
 
 export default function Market(){

@@ -7,9 +7,9 @@ import { MdEmail } from "react-icons/md"
 import { TfiEmail } from "react-icons/tfi"
 import { BiPhone } from "react-icons/bi"
 import { GoLocation } from "react-icons/go"
-import ButtonHoverTapEffect from "../components/ButtonHoverTapEffect"
+import ButtonHoverTapEffect from "../../components/ButtonHoverTapEffect"
 import {motion, AnimateSharedLayout } from "framer-motion"
-import ComponentsScroll from "../components/ComponentEntranceExit"
+import ComponentsScroll from "../../components/ComponentEntranceExit"
 
 export default function Contact(){
 

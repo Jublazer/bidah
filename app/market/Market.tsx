@@ -1,7 +1,7 @@
 "use client"
 
 import { BiCategory, BiSearch } from "react-icons/bi"
-import { Produce, produceData } from "../components/dummyData"
+import { Produce, produceData } from "../../components/dummyData"
 import React, { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { div } from "framer-motion/client"

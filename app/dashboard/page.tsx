@@ -1,6 +1,6 @@
 "use client"
 import { useUser, SignedIn, SignedOut, SignOutButton, SignInButton } from "@clerk/nextjs";
-import { Produce, usersType, produceData, users } from "../components/dummyData";
+import { Produce, usersType, produceData, users } from "../../components/dummyData";
 import { BsPlusCircle } from "react-icons/bs";
 import { useState } from "react";
 import { startTransition } from "react";

@@ -1,7 +1,7 @@
 "use client"
 
 import { useParams, useRouter } from "next/navigation";
-import { produceData } from "../../components/dummyData";
+import { produceData } from "../../../components/dummyData";
 import { BiArrowBack } from "react-icons/bi";
 
 export default function ProducePage(){
