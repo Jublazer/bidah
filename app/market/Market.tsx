@@ -217,15 +217,15 @@ const states = [...new Set(produceData.map(item=>item.state))].sort();
                                 <div
                                 key={item.pid}
                                 onClick={() => handleProduceCLick(item.pid)}
-                                className="bg-gray-300 border border-gray-280 rounded-lg p-4 hover:shadow-md hover:border-green-500 transition-shadow duration-300 ease-in-out cursor-pointer"
+                                className="bg-gray-300/20 backdrop-blur border border-[#2f2f2f]/10 rounded-lg p-4 hover:shadow-lg hover:border-green-500 transition-shadow duration-300 ease-in-out cursor-pointer"
                                 >
                                 <div className="flex justify-between items-start">
-                                    <h3 className="text-lg font-semibold text-green-800">{item.pname}</h3>
+                                    <h3 className="text-lg font-semibold text-green-800 dark:text-green-500">{item.pname}</h3>
                                     <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
                                     {item.category}
                                     </span>
                                 </div>
-                                <div className="mt-2 text-sm text-gray-600">
+                                <div className="mt-2 text-sm text-gray-600 dark:text-gray-200">
                                     <p>From: {item.state}</p>
                                     <p className="mt-1">Price: N{item.price.toFixed(2)} per unit</p>
                                     <div className="flex items-center mt-1">

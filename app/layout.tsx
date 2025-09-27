@@ -41,10 +41,8 @@ export default function RootLayout({
       <ClerkProvider>
         <html lang="en">
           <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased w-full font-family-[poppins] bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 antialiased flex flex-col items-center justify-center`}
+            className={`${geistSans.variable} ${geistMono.variable} antialiased w-full font-family-[poppins] bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 antialiased flex flex-col items-center justify-center`}
           >
-            <header className="flex justify-end items-center p-4 gap-4 h-16">
-            </header>
             <Hero />
             {children}
 

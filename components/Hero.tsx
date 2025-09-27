@@ -10,13 +10,13 @@ export default function Hero(){
 
     return(
         <div className="relative w-full h-screen bg-cover bg-no-repeat" style={{backgroundImage: "url('/assets/FarmCrops.jpg')"}}>
-            <div className="absolute inset-0 w-full h-screen place-item-center justify-center items-center bg-black/50">
+            <div className="absolute inset-0 w-full h-screen place-item-center justify-center items-center dark:bg-black/50">
             
                 <ComponentsScroll>
                     <div className="mx-auto h-screen flex flex-col items-center justify-center w-full ">
-                        <p className=""><span className="font-bold text-green-500">Bidah</span> Fresh Farm</p>
+                        <p className="text-gray-100"><span className="font-bold text-green-500">Bidah</span> Fresh Farm</p>
                         <hr className="w-[70%] border-green-500" />
-                        <h1 className="text-6xl font-semibold ">Produce</h1>
+                        <h1 className="text-6xl font-semibold dark:text-gray-200 ">Produce</h1>
                     </div>
                 </ComponentsScroll>
             

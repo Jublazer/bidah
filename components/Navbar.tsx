@@ -28,8 +28,8 @@ export default function Hero(){
 
     ]
     return(
-        <nav className="flex md:w-full w-[256px] bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex-col md:flex-row mt-5 md:px-30 mb-5 items-center justify-between gap-30 backdrop-blur-10">
-            <div className="flex w-full items-center justify-between items-center gap-10">
+        <nav className="flex md:w-full w-full bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex-col md:flex-row p-3 md:px-30 items-center justify-between gap-30 backdrop-blur-10">
+            <div className="flex w-[256px]  items-center justify-between items-center gap-10">
                 <Link href={'/'} className="glass font-extrabold justify-start text-green-300">
                     <Image src={logo.src} width={45} height={45} alt="site logo" />
                 </Link>
@@ -41,7 +41,7 @@ export default function Hero(){
                 </div>
                 <div className="hidden md:flex justify gap-4">
                     {navLinks.map(item => (
-                        <Link key={item.id} href={item.link} className="relative group mx-auto">
+                        <Link key={item.id} href={item.link} className="relative group mx-auto dark:text-gray-200">
                             {item.icn}
                             <span className=" absolute bottom-[-12px] mt-1 left-0 w-full h-1 transform scale-y-0 group-hover:scale-y-100 
                             transition transform duration-300 ease-in-out"><p className="font-regular text-xs text-green-500">{item.title}</p></span>
@@ -50,7 +50,7 @@ export default function Hero(){
                 </div>
             </div>
 
-            <div className="w-full ">
+            <div className="w-full flex justify-around items-center ">
                 { linkNav ? (
                         <div className="flex flex-col w-full h-screen bg-dark transform hover:text-white duration-3000 ease-in-out  md:hidden">
                             { 
@@ -64,7 +64,9 @@ export default function Hero(){
                         </div>
                     ) : null
                 }
-                <ThemeToggle />
+                <div className="w-40">
+                    <ThemeToggle />
+                </div>
             </div>
         </nav>
     )

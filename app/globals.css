@@ -3,7 +3,11 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-
+  body{
+    margin: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+  }
   @keyframes hide {
     from {
       opacity: 1;

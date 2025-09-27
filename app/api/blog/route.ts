@@ -60,7 +60,7 @@ export async function GETById(request: NextRequest, { params }: { params: { id: 
 }
 
 // delete by id
-export async function DELETEById(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
   try { 
     await mongooseDBConnection();
     const deletedBlog = await Blog.findByIdAndDelete(params.id);
