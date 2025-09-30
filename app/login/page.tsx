@@ -33,7 +33,7 @@ export default function LoginPage() {
     try {
       const response = await apiClient.post('auth/login', formData);
       
-      if (response.success) {
+      if (response) {
         localStorage.setItem('kidah_token', response.data.token);
         localStorage.setItem('kidah_user', JSON.stringify(response.data.user));
         

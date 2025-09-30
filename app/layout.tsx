@@ -4,15 +4,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Hero from "../components/Navbar";
-
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/nextjs'
 import './globals.css'
 import { ThemeProvider } from "@/providers/theme-provider";
 
@@ -38,7 +29,6 @@ export default function RootLayout({
 }>) {
   return (
     <ThemeProvider>
-      <ClerkProvider>
         <html lang="en">
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased w-full font-family-[poppins] bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-700 dark:to-gray-900 antialiased flex flex-col items-center justify-center`}
@@ -48,7 +38,6 @@ export default function RootLayout({
 
           </body>
         </html>
-      </ClerkProvider>
     </ThemeProvider>
   );
 }

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 // JWT configuration
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || 'motion-001-x0oworth-try-again-later';
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 
 if (!JWT_SECRET) {
@@ -29,12 +29,12 @@ export interface TokenVerificationResult {
 export function generateToken(payload: JWTPayload): string {
   try {
     return jwt.sign(payload, JWT_SECRET, {
-      expiresIn: JWT_EXPIRES_IN,
+      expiresIn: '7d',
       issuer: 'kidah-app',
       audience: 'kidah-users',
     });
   } catch (error) {
-    throw new Error(`Failed to generate token: ${error.message}`);
+    throw new Error(`Failed to generate token: ${error}`);
   }
 }
 
@@ -256,3 +256,54 @@ export const JWTUtils = {
 };
 
 export default JWTUtils;
+
+// New Update
+// import jwt from 'jsonwebtoken';
+
+// // ✅ Use a consistent, strong JWT secret
+// const JWT_SECRET = process.env.JWT_SECRET || 'kidah-development-secret-change-in-production';
+// const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
+
+// // ✅ Validate JWT secret exists
+// if (!JWT_SECRET) {
+//   throw new Error('JWT_SECRET environment variable is required');
+// }
+
+// export interface JWTPayload {
+//   userId: string;
+//   email: string;
+//   userType: 'farmer' | 'buyer' | 'admin';
+// }
+
+// export function generateToken(payload: JWTPayload): string {
+//   try {
+//     return jwt.sign(payload, JWT_SECRET, {expiresIn:'7d'});
+//   } catch (error) {
+//     console.error('❌ JWT Generation Error:', error);
+//     throw new Error('Failed to generate authentication token');
+//   }
+// }
+
+// export function verifyToken(token: string): JWTPayload {
+//   try {
+//     return jwt.verify(token, JWT_SECRET) as JWTPayload;
+//   } catch (error) {
+//     console.error('❌ JWT Verification Error:', error);
+    
+//     if (error.name === 'TokenExpiredError') {
+//       throw new Error('Authentication token has expired');
+//     } else if (error.name === 'JsonWebTokenError') {
+//       throw new Error('Invalid authentication token');
+//     } else {
+//       throw new Error('Authentication failed');
+//     }
+//   }
+// }
+
+// // ✅ Simple, reliable token extraction
+// export function extractTokenFromHeader(authHeader: string | null): string | null {
+//   if (!authHeader || !authHeader.startsWith('Bearer ')) {
+//     return null;
+//   }
+//   return authHeader.substring(7);
+// }

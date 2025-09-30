@@ -4,7 +4,6 @@ import { BiCategory, BiSearch } from "react-icons/bi"
 import { Produce, produceData } from "../../components/dummyData"
 import React, { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { div } from "framer-motion/client"
 
 export const metadata = {
     title: "Market",
@@ -275,7 +274,7 @@ export const Categories = ()=>{
 
     return(
         <>
-                <div className="w-full flex flex-col ">
+                <div className="w-full flex flex-col items-center justify-center md:justify-start">
                     {/* Categories and sorting */}
                     <p className="text-gray-600">Search and sort produce base on your preference</p><br />
                     <h2 className="text-gray-400">Categories: </h2>
@@ -297,7 +296,7 @@ export const Categories = ()=>{
                         </span>
                 </div>
                 
-                <div className="place-items-center w-full grid md:grid-cols-4 sm:grid-cols-3 xl:grid-cols-5 min-h-screen gap-3 md:gap-5 lg:gap-5 sm:gap-3 p-3 ">
+                <div className="w-full grid md:grid-cols-4 place-items-center space-10 sm:grid-cols-3 xl:grid-cols-5 min-h-screen gap-3 md:gap-5 lg:gap-5 sm:gap-3 p-3 ">
                     {/* Categories Produce  Filter */}
                     {produceData.filter((product) => product.category === (category!=='' ? category : selectedCat)).map((filteredProduct) => (
                     <div key={filteredProduct.pid} className="relative flex items-center justify-center overflow-y-clip bg-white/30 text-dark w-[250px] h-[250px] border border-solid rounded-lg shadowed-xlg">
